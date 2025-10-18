@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Scholaris</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scholaris</title>
+    <link rel="stylesheet" href="quiz.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@275;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="https://fcg.ct.ws/">
+            <img src="https://i.ibb.co/s9NtJHw/image.png" alt="Insightum Logo" class="logo">
+        </a>
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="dropdown-menu">
+            <a href="https://fcg.ct.ws/">Home</a>
+            <a href="https://fcg.ct.ws/scholaris">Scholaris</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Title -->
+        <h1 class="page-title">Make a quiz!</h1>
+        
+        <!-- Instruction Section -->
+        <section class="instruction-section" id="instruction-section">
+            <p class="instruction-text">
+                Paste the code from 
+                <a href="https://chatgpt.com/g/g-67334f28cd048190ac573b1f96bdbf0f-caigpt" target="_blank" class="link">CaiGPT</a>
+                into the box below:
+            </p>
+            <div class="textarea-container">
+                <textarea id="quiz-code" placeholder="Paste your CaiGPT code here"></textarea>
+                <button class="paste-button" id="paste-button" title="Paste from clipboard">
+                    <!-- Clipboard Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 
+                                 2 0 0 1-2 2H6a2 2 0 0 
+                                 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                        <rect x="8" y="2" width="8" height="4" 
+                              rx="1" ry="1"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="button-group">
+                <button id="help-button" class="secondary-button">Help</button>
+                <button id="start-quiz-button" class="primary-button">Start</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section" id="quiz-section" style="display: none;">
+            <div class="quiz-status">
+                Question <span id="current-question-number"></span> of <span id="total-questions"></span>
+            </div>
+            <div class="quiz-question" id="quiz-question"></div>
+            <div class="quiz-options" id="quiz-options"></div>
+        </section>
+
+<!-- Result Section -->
+<section class="result-section" id="result-section" style="display: none;">
+    <h2>Quiz Completed</h2>
+<div class="score-circle">
+    <svg width="250" height="250">
+        <circle class="bg-circle" cx="125" cy="125" r="112"></circle>
+        <circle class="progress-circle" cx="125" cy="125" r="112" stroke-dasharray="703.72" stroke-dashoffset="0"></circle>
+        <text x="50%" y="50%" text-anchor="middle" dy=".3em" class="score-percentage">0%</text>
+    </svg>
+</div>
+    <p>You scored <span id="correct-answers"></span>/<span id="total-questions-result"></span></p>
+    <div class="button-group">
+        <button id="retry-button" class="secondary-button">Retry</button>
+        <button id="new-quiz-button" class="primary-button">New</button>
+    </div>
+    <!-- Review Section -->
+    <h2>Review</h2>
+    <div class="review-section" id="review-section" style="width: 100%;"></div>
+</section>
+
+
+        <!-- Custom Notification -->
+<div class="notification" id="notification" style="display: none;">
+    <div class="notification-content">
+        <div class="notification-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 1.33334C4.31811 1.33334 1.33334 4.31811 1.33334 8C1.33334 11.6819 4.31811 14.6667 8 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 8C14.6667 4.31811 11.6819 1.33334 8 1.33334ZM8.66667 11.3333H7.33334V7.33334H8.66667V11.3333ZM8.66667 6H7.33334V4.66667H8.66667V6Z" 
+                      fill="currentColor"/>
+            </svg>
+        </div>
+        <p class="notification-text" id="notification-message">Notification message here</p>
+    </div>
+    <button id="notification-close-button" class="notification-button">OK</button>
+</div>
+
+        <!-- Help Modal -->
+        <div id="help-modal" class="modal" style="display: none;">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close-button" id="modal-close-button" aria-label="Close">
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="modal-body">
+                    <h2>How to Use</h2>
+                    <ol class="modal-instructions">
+                        <li>Copy this:
+                            <div class="copy-container">
+                                <textarea id="modal-copy-text" readonly>
+Number of questions: [1-15]
+Difficulty: [easy/medium/hard]
+Content: A general topic or detailed notes.
+                                </textarea>
+                                <button class="copy-button" id="copy-instructions-button" title="Copy to clipboard">
+                                    <!-- Clipboard icon -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 4h2a2 2 0 0 
+                                                 1 2 2v14a2 2 0 0 
+                                                 1-2 2H6a2 2 0 0 
+                                                 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                        <rect x="8" y="2" width="8" height="4" 
+                                              rx="1" ry="1"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            Go to 
+                            <a href="https://chatgpt.com/g/g-67334f28cd048190ac573b1f96bdbf0f-caigpt" 
+                               target="_blank" class="link">CaiGPT</a> 
+                            and paste it in with your settings.
+                        </li>
+                        <li>Copy the code from CaiGPT and paste it in.</li>
+                    </ol>
+                </div>
+              <button class="done-button">Done</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>@ 2025 Infinite</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="quiz.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
