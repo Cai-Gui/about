@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Inter:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <!-- Updated video structure -->
+    <video 
+        class="background-video" 
+        playsinline 
+        webkit-playsinline 
+        muted 
+        autoplay 
+        loop>
+        <source src="assets/Background.mp4" type="video/mp4">
+    </video>
+    
+    <div class="video-dimmer"></div>
 
+    <!-- Main content container -->
+    <div class="container">
+        <div class="title animate-element">
+            <h1>Explore the</h1>
+            <h2>Infinity</h2>
+        </div>
+        <p class="animate-element">Helping you to discover endless opportunities.</p>
+        <div class="email-container animate-element">
+            <input type="email" placeholder="Your Email Address" id="email" autocomplete="off">
+            <button class="notify-button" onclick="notify()">
+                <span id="buttonText">Get Notified</span>
+                <div class="loading-wheel"></div>
+            </button>
+        </div>
+        <div class="badge animate-element">
+            <span>Timeless</span>
+            <span class="divider">|</span>
+            <span>Fu Cai Gui</span>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span class="notification-icon">
+                <img src="https://i.ibb.co/ncV8QDr/star.png" alt="Star Icon">
+            </span>
+            <div class="notification-text">
+                <strong>Congratulations!</strong>
+                <p>You'll be notified when we're live.</p>
+            </div>
+            <button class="notification-close" onclick="closeNotification()">Okay</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <hr class="footer-separator">
+        <p class="footer-text">@ 2025 Infinite</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
