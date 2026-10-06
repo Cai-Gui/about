@@ -174,8 +174,36 @@
     </div>
 
     <div class="footer">
-      © 2026 Cai Gui
+      <button class="footer-toggle" id="about-toggle" type="button" aria-expanded="false" aria-controls="about-panel">© 2026 Cai Gui</button>
+      <div class="about-panel" id="about-panel" inert>
+        <div class="about-inner">
+          <section class="about-text" aria-label="About Cai Gui">
+            <p>Cai Gui is entrepreneur, creator and worldbuilder based in Singapore. Infinite is both his company and his approach to work. Cai Gui builds ventures around problems worth solving, using research and technology to help society, protect environment and give more people access to opportunities.</p>
+            <p>As entrepreneur, Cai Gui founded Hydropod and Infinite. Hydropod develops portable hydrogen generator that turns food waste and aluminium waste into clean energy for communities where water is scarce and power is unstable. Hydropod won OCBC TSYF Challenge, Tan Kah Kee Young Inventors Award, Most Innovative Product at Aramco JA WE Challenge and Silver at Singapore Science and Engineering Fair. His ventures cover clean energy, accessible AI, climate tech and education, driven by passion to make sustainable solutions useful in everyday life.</p>
+            <p>Cai Gui also builds technology for seniors and communities. With Senior Safety Solutions, he created ElderGuard, smart fall detection technology for safe independent living, and won 3rd Place at Samsung Solve for Tomorrow. He presented ElderGuard to HDB, and solution was piloted in Health District @ Queenstown.</p>
+            <p>As creator, Cai Gui writes, photographs and shares ideas on Instagram, TikTok and X to start conversations about society and environment. Readers can become Insider to follow his new projects and research. As worldbuilder, Cai Gui turns ideas into complete worlds, connecting people, technology and society through products, systems and stories.</p>
+            <p>Cai Gui studies at Hwa Chong Institution in Singapore and serves as Vice President of Students' Science Research Club. He works as Research Intern at A*STAR, Singapore's Agency for Science, Technology and Research. He previously studied at School of Science and Technology, Singapore, where he earned Top GCE O Level Performer Award with 10 Distinctions, and served as Vice Chairperson of Digital Citizenship Board.</p>
+            <p>Cai Gui studies economics, finance and essay writing to understand how markets and policy can serve society. He finished 1st Runner Up at HSBC x JA Young Investors Challenge 2026. He placed Top 20 with Distinction at Singapore National Economics Olympiad, won 3rd place at International Economics Olympiad (Open) and earned Top 5% at R.A. Butler Politics Prize. He has also taken part in 16 Model United Nations conferences, serving as Chairperson, Secretariat and Delegate.</p>
+          </section>
+        </div>
+      </div>
     </div>
+    <script>
+      (function () {
+        var btn = document.getElementById('about-toggle');
+        var panel = document.getElementById('about-panel');
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          panel.classList.toggle('open', !open);
+          if (open) { panel.setAttribute('inert', ''); }
+          else {
+            panel.removeAttribute('inert');
+            setTimeout(function () { panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
+          }
+        });
+      })();
+    </script>
   </div>
 </body>
 </html>
