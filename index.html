@@ -78,7 +78,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css?v=2"/>
+  <style>
+    .footer { margin-top: 32px; font-size: 13px; color: #8a8a8a; }
+    .footer-toggle {
+      -webkit-appearance: none; appearance: none;
+      background: transparent; border: 0; box-shadow: none; outline: none;
+      padding: 4px 8px; margin: 0; font: inherit; color: inherit;
+      cursor: pointer; border-radius: 6px; transition: color 0.2s ease;
+    }
+    .footer-toggle:hover, .footer-toggle:focus-visible { color: #fff; }
+    .about-panel[hidden] { display: none !important; }
+    .about-panel {
+      display: grid; grid-template-rows: 0fr; opacity: 0;
+      transition: grid-template-rows 0.5s ease, opacity 0.5s ease;
+    }
+    .about-panel.open { grid-template-rows: 1fr; opacity: 1; }
+    .about-inner { overflow: hidden; }
+    .about-text { text-align: left; padding: 20px 4px 8px; font-size: 14px; line-height: 1.7; color: #b5b5b5; }
+    .about-text p { margin-bottom: 14px; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -175,7 +194,7 @@
 
     <div class="footer">
       <button class="footer-toggle" id="about-toggle" type="button" aria-expanded="false" aria-controls="about-panel">© 2026 Cai Gui</button>
-      <div class="about-panel" id="about-panel" inert>
+      <div class="about-panel" id="about-panel" hidden>
         <div class="about-inner">
           <section class="about-text" aria-label="About Cai Gui">
             <p>Cai Gui is entrepreneur, creator and worldbuilder based in Singapore. Infinite is both his company and his approach to work. Cai Gui builds ventures around problems worth solving, using research and technology to help society, protect environment and give more people access to opportunities.</p>
@@ -195,10 +214,14 @@
         btn.addEventListener('click', function () {
           var open = btn.getAttribute('aria-expanded') === 'true';
           btn.setAttribute('aria-expanded', String(!open));
-          panel.classList.toggle('open', !open);
-          if (open) { panel.setAttribute('inert', ''); }
-          else {
-            panel.removeAttribute('inert');
+          if (open) {
+            panel.classList.remove('open');
+            setTimeout(function () { panel.hidden = true; }, 500);
+          } else {
+            panel.hidden = false;
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () { panel.classList.add('open'); });
+            });
             setTimeout(function () { panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
           }
         });
