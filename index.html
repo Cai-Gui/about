@@ -60,9 +60,9 @@
           "url": "https://hci.edu.sg/"
         }],
         "sameAs": [
-        "https://tiktok.com/@caigui10",
+        "https://tiktok.com/@caigui11",
         "https://www.linkedin.com/in/caiguifu/",
-        "https://instagram.com/caigui14",
+        "https://instagram.com/caigui17",
         "https://x.com/caigptx",
         "https://caigui.substack.com/",
         "https://genius.com/FuCaiGui",
@@ -81,13 +81,17 @@
   <link rel="stylesheet" href="style.css?v=2"/>
   <style>
     .footer { margin-top: 32px; font-size: 13px; color: #8a8a8a; }
-    .footer-toggle {
+    .footer-toggle,
+    .footer-toggle:hover,
+    .footer-toggle:focus,
+    .footer-toggle:focus-visible,
+    .footer-toggle:active {
       -webkit-appearance: none; appearance: none;
+      -webkit-tap-highlight-color: transparent;
       background: transparent; border: 0; box-shadow: none; outline: none;
-      padding: 4px 8px; margin: 0; font: inherit; color: inherit;
-      cursor: pointer; border-radius: 6px; transition: color 0.2s ease;
+      padding: 0; margin: 0; font: inherit; color: inherit;
+      cursor: text; transition: none; user-select: text;
     }
-    .footer-toggle:hover, .footer-toggle:focus-visible { color: #fff; }
     .about-panel[hidden] { display: none !important; }
     .about-panel {
       display: grid; grid-template-rows: 0fr; opacity: 0;
@@ -109,17 +113,17 @@
     </h1>
  
     <div class="social-links">
-      <a href="https://instagram.com/caigui14" class="social-link" target="_blank" rel="noopener noreferrer">
+      <a href="https://instagram.com/caigui17" class="social-link" target="_blank" rel="noopener noreferrer">
         <span class="social-icon">
-          <img src="/assets/instagram.jpg" alt="Instagram @caigui14" loading="lazy">
+          <img src="/assets/instagram.jpg" alt="Instagram @caigui17" loading="lazy">
         </span>
-        @caigui14
+        @caigui17
       </a>
-      <a href="https://www.tiktok.com/@caigui10" class="social-link" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.tiktok.com/@caigui11" class="social-link" target="_blank" rel="noopener noreferrer">
         <span class="social-icon">
-          <img src="/assets/tiktok.jpeg" alt="TikTok @caigui10" loading="lazy">
+          <img src="/assets/tiktok.jpeg" alt="TikTok @caigui11" loading="lazy">
         </span>
-        @caigui10
+        @caigui11
       </a>
       <a href="https://x.com/caigptx" class="social-link" target="_blank" rel="noopener noreferrer">
         <span class="social-icon">
@@ -222,7 +226,6 @@
             requestAnimationFrame(function () {
               requestAnimationFrame(function () { panel.classList.add('open'); });
             });
-            setTimeout(function () { panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
           }
         });
       })();
