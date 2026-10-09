@@ -114,18 +114,3 @@ body {
   white-space: nowrap;
   border: 0;
 }
-/* Footer easter egg */
-.footer { margin-top: 32px; font-size: 13px; color: #8a8a8a; }
-.footer-toggle {
-  background: none; border: 0; padding: 4px 8px; font: inherit; color: inherit;
-  cursor: pointer; border-radius: 6px; transition: color 0.2s ease;
-}
-.footer-toggle:hover, .footer-toggle:focus-visible { color: #fff; }
-.about-panel {
-  display: grid; grid-template-rows: 0fr; opacity: 0;
-  transition: grid-template-rows 0.5s ease, opacity 0.5s ease;
-}
-.about-panel.open { grid-template-rows: 1fr; opacity: 1; }
-.about-inner { overflow: hidden; }
-.about-text { text-align: left; padding: 20px 4px 8px; font-size: 14px; line-height: 1.7; color: #b5b5b5; }
-.about-text p { margin-bottom: 14px; }
